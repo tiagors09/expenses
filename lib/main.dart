@@ -1,6 +1,5 @@
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 main() => runApp(const ExpensesApp());
 
@@ -70,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                               )),
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                e.value.toString(),
+                                e.value.toStringAsFixed(2),
                                 style: const TextStyle(
                                     color: Colors.purple,
                                     fontWeight: FontWeight.bold,
