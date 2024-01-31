@@ -1,6 +1,6 @@
 # expenses
 
-A new Flutter project.
+App para controle de despesas.
 
 ## Instalação
 
@@ -9,13 +9,13 @@ Certifique-se de ter o Flutter instalado em sua máquina. Se ainda não tiver, v
 Clone este repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/meu-projeto-flutter.git
+git clone https://github.com/seu-usuario/expenses.git
 ```
 
 Em seguida, entre no diretório do projeto:
 
 ```bash
-cd meu-projeto-flutter
+cd expenses
 ```
 
 Instale as dependências:
