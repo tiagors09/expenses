@@ -51,7 +51,9 @@ class _TransactionUserState extends State<TransactionUser> {
     return Column(
       children: [
         TransactionList(transactions: _transactions),
-        TransactionForm(),
+        TransactionForm(
+          onSubmit: _addTransaction,
+        ),
       ],
     );
   }
