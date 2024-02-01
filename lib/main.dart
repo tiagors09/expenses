@@ -14,6 +14,9 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+
   final _transactions = [
     Transaction(
       id: '1',
@@ -45,7 +48,6 @@ class MyHomePage extends StatelessWidget {
           backgroundColor: Colors.amber,
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             const SizedBox(
@@ -96,6 +98,41 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ))
                   .toList(),
+            ),
+            Card(
+              elevation: 5,
+              child: Container(
+                  margin: const EdgeInsets.all(10),
+                  child: Column(children: [
+                    TextField(
+                      controller: titleController,
+                      decoration: const InputDecoration(labelText: 'Título'),
+                    ),
+                    TextField(
+                      keyboardType:
+                          const TextInputType.numberWithOptions(decimal: true),
+                      controller: valueController,
+                      decoration:
+                          const InputDecoration(labelText: 'Valor (R\$)'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                print(titleController.text);
+                                print(valueController.text);
+                              },
+                              child: const Text(
+                                'Nova Transação',
+                                style: TextStyle(color: Colors.purple),
+                              )),
+                        ],
+                      ),
+                    )
+                  ])),
             ),
           ],
         ));
