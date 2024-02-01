@@ -1,5 +1,6 @@
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 main() => runApp(const ExpensesApp());
 
@@ -69,7 +70,7 @@ class MyHomePage extends StatelessWidget {
                               )),
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                e.value.toStringAsFixed(2),
+                                'R\$ ${e.value.toStringAsFixed(2)}',
                                 style: const TextStyle(
                                     color: Colors.purple,
                                     fontWeight: FontWeight.bold,
@@ -86,7 +87,7 @@ class MyHomePage extends StatelessWidget {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
-                                  e.date.toString(),
+                                  DateFormat('dd-MM-yyyy').format(e.date),
                                   style: TextStyle(color: Colors.grey.shade400),
                                 )
                               ],
