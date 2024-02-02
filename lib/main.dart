@@ -18,24 +18,31 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Despesas Pessoais'),
-          backgroundColor: Colors.amber,
-        ),
-        body: const SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  color: Color.fromRGBO(255, 248, 225, 1),
-                  child: Text('Gráfico'),
-                ),
+      appBar: AppBar(
+        title: const Text('Despesas Pessoais'),
+        backgroundColor: Colors.amber,
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+      ),
+      body: const SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            SizedBox(
+              width: double.infinity,
+              child: Card(
+                color: Color.fromRGBO(255, 248, 225, 1),
+                child: Text('Gráfico'),
               ),
-              TransactionUser(),
-            ],
-          ),
-        ));
+            ),
+            TransactionUser(),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
   }
 }
