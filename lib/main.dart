@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:expenses/components/chart.dart';
 import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/components/transaction_list.dart';
 import 'package:expenses/models/transaction.dart';
@@ -37,27 +38,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [];
-  /* [
+  final List<Transaction> _transactions = [
     Transaction(
       id: '1',
       title: 'Compra de alimentos',
       value: 50.0,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(const Duration(days: 33)),
     ),
     Transaction(
       id: '2',
       title: 'Pagamento de conta',
       value: 100.0,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(const Duration(days: 1)),
     ),
     Transaction(
       id: '3',
       title: 'Gasolina',
       value: 30.0,
-      date: DateTime.now(),
+      date: DateTime.now().subtract(const Duration(days: 2)),
     ),
-  ]; */
+  ];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(const Duration(days: 7)));
+    }).toList();
+  }
 
   void _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -99,13 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const SizedBox(
-              width: double.infinity,
-              child: Card(
-                color: Color.fromRGBO(255, 248, 225, 1),
-                child: Text('Gráfico'),
-              ),
-            ),
+            Chart(recentTransaction: _recentTransactions),
             TransactionList(transactions: _transactions),
           ],
         ),
