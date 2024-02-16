@@ -18,8 +18,11 @@ class ChartBar extends StatelessWidget {
       child: Column(
         children: [
           Container(
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 5.0),
-              child: FittedBox(child: Text('R\$${value.toStringAsFixed(2)}'))),
+            height: 20,
+            child: FittedBox(
+              child: Text('R\$${value.toStringAsFixed(2)}'),
+            ),
+          ),
           Container(
             height: 60,
             width: 10,
