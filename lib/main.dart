@@ -65,12 +65,13 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addTransaction(String title, double value) {
+  void _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
-        id: Random().nextDouble().toString(),
-        title: title,
-        value: value,
-        date: DateTime.now());
+      id: Random().nextDouble().toString(),
+      title: title,
+      value: value,
+      date: date,
+    );
 
     setState(() {
       _transactions.add(newTransaction);
@@ -81,10 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
-        context: context,
-        builder: (ctx) {
-          return TransactionForm(onSubmit: _addTransaction);
-        });
+      context: context,
+      builder: (ctx) {
+        return TransactionForm(onSubmit: _addTransaction);
+      },
+    );
   }
 
   @override
@@ -97,16 +99,21 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
-              onPressed: () => _openTransactionFormModal(context),
-              icon: const Icon(Icons.add)),
+            onPressed: () => _openTransactionFormModal(context),
+            icon: const Icon(Icons.add),
+          ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Chart(recentTransaction: _recentTransactions),
-            TransactionList(transactions: _transactions),
+            Chart(
+              recentTransaction: _recentTransactions,
+            ),
+            TransactionList(
+              transactions: _transactions,
+            ),
           ],
         ),
       ),
@@ -114,7 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           _openTransactionFormModal(context);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
