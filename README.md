@@ -35,3 +35,7 @@ flutter run
 ```
 
 ## Screenshots
+
+![screen 1](.screenshots/screen_1.png)
+
+![screen 2](.screenshots/screen_2.png)
