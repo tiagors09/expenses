@@ -5,6 +5,7 @@ import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/components/transaction_list.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 main() => runApp(const ExpensesApp());
 
@@ -13,6 +14,12 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+      [
+        DeviceOrientation.portraitUp,
+      ],
+    );
+
     return MaterialApp(
       home: const MyHomePage(),
       theme: ThemeData(
@@ -79,8 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final appBar = AppBar(
-      title: const Text(
+      title: Text(
         'Despesas Pessoais',
+        style: TextStyle(
+          fontSize: MediaQuery.of(context).textScaler.scale(20),
+        ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
       actions: [
@@ -102,13 +112,13 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             SizedBox(
-              height: availableHeight * 0.3,
+              height: availableHeight * 0.30,
               child: Chart(
                 recentTransaction: _recentTransactions,
               ),
             ),
             SizedBox(
-              height: availableHeight * 0.7,
+              height: availableHeight * 0.70,
               child: TransactionList(
                 transactions: _transactions,
                 onRemove: _deleteTransaction,
