@@ -89,14 +89,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    var mediaQuery = MediaQuery.of(context);
+    bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
     final appBar = AppBar(
       title: Text(
         'Despesas Pessoais',
         style: TextStyle(
-          fontSize: MediaQuery.of(context).textScaler.scale(20),
+          fontSize: mediaQuery.textScaler.scale(20),
         ),
       ),
       backgroundColor: Theme.of(context).primaryColor,
@@ -110,19 +110,20 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         if (isLandscape)
           IconButton(
-              onPressed: () => setState(() {
-                    _showChart = !_showChart;
-                  }),
-              icon: Icon(
-                _showChart ? Icons.list : Icons.show_chart,
-                color: Colors.white,
-              ))
+            onPressed: () => setState(() {
+              _showChart = !_showChart;
+            }),
+            icon: Icon(
+              _showChart ? Icons.list : Icons.show_chart,
+              color: Colors.white,
+            ),
+          )
       ],
     );
 
-    final availableHeight = MediaQuery.of(context).size.height -
+    final availableHeight = mediaQuery.size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        mediaQuery.padding.top;
 
     return Scaffold(
       appBar: appBar,
