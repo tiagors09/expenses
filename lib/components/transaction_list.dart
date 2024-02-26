@@ -46,11 +46,23 @@ class TransactionList extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
                 elevation: 5,
                 child: ListTile(
-                  trailing: IconButton(
-                    onPressed: () => onRemove(tr.id),
-                    icon: const Icon(Icons.delete),
-                    color: Colors.red,
-                  ),
+                  trailing: MediaQuery.of(ctx).size.width > 480
+                      ? IconButton(
+                          onPressed: () => onRemove(tr.id),
+                          icon: const Icon(Icons.delete),
+                          color: Colors.red,
+                        )
+                      : TextButton.icon(
+                          onPressed: () => onRemove(tr.id),
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                          ),
+                          label: const Text(
+                            'Excluir',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
                   title: Text(
                     tr.title,
                     style: Theme.of(context).textTheme.titleLarge,
