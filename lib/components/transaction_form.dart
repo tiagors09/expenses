@@ -45,7 +45,12 @@ class _TransactionForm extends State<TransactionForm> {
       elevation: 0,
       child: SingleChildScrollView(
         child: Container(
-          margin: const EdgeInsets.all(10),
+          margin: EdgeInsets.only(
+            top: 10,
+            right: 10,
+            left: 10,
+            bottom: 10 + MediaQuery.of(context).viewInsets.bottom,
+          ),
           child: Column(
             children: [
               TextField(
