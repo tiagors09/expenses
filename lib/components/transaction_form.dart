@@ -55,21 +55,14 @@ class _TransactionForm extends State<TransactionForm> {
           ),
           child: Column(
             children: [
-              AdaptativeTextField(
-                controller: titleController,
-                decoration: const InputDecoration(
-                  labelText: 'Título',
-                ),
-              ),
+              AdaptativeTextField(controller: titleController, label: 'Título'),
               AdaptativeTextField(
                 keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
                 onSubmitted: (_) => _submitForm(),
                 controller: valueController,
-                decoration: const InputDecoration(
-                  labelText: 'Valor (R\$)',
-                ),
+                label: 'Valor (R\$)',
               ),
               SizedBox(
                 height: 70,

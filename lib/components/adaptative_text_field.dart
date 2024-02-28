@@ -7,14 +7,14 @@ class AdaptativeTextField extends StatelessWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final void Function(String)? onSubmitted;
-  final InputDecoration? decoration;
+  final String? label;
 
   const AdaptativeTextField({
     super.key,
     this.controller,
     this.keyboardType,
     this.onSubmitted,
-    this.decoration,
+    this.label,
   });
 
   @override
@@ -24,13 +24,15 @@ class AdaptativeTextField extends StatelessWidget {
             controller: controller,
             keyboardType: keyboardType,
             onSubmitted: onSubmitted,
-            placeholder: decoration?.labelText,
+            placeholder: label,
           )
         : TextField(
             controller: controller,
             keyboardType: keyboardType,
             onSubmitted: onSubmitted,
-            decoration: decoration,
+            decoration: InputDecoration(
+              label: Text(label ?? ''),
+            ),
           );
   }
 }
