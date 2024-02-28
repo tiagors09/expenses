@@ -1,5 +1,7 @@
+import 'package:expenses/components/adaptative_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'adaptative_button.dart';
 
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
@@ -53,16 +55,21 @@ class _TransactionForm extends State<TransactionForm> {
           ),
           child: Column(
             children: [
-              TextField(
+              AdaptativeTextField(
                 controller: titleController,
-                decoration: const InputDecoration(labelText: 'Título'),
+                decoration: const InputDecoration(
+                  labelText: 'Título',
+                ),
               ),
-              TextField(
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
+              AdaptativeTextField(
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 onSubmitted: (_) => _submitForm(),
                 controller: valueController,
-                decoration: const InputDecoration(labelText: 'Valor (R\$)'),
+                decoration: const InputDecoration(
+                  labelText: 'Valor (R\$)',
+                ),
               ),
               SizedBox(
                 height: 70,
@@ -92,19 +99,9 @@ class _TransactionForm extends State<TransactionForm> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    TextButton(
-                      style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                          Colors.purple,
-                        ),
-                      ),
+                    AdaptativeButton(
+                      label: 'Nova Transação',
                       onPressed: _submitForm,
-                      child: const Text(
-                        'Nova Transação',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
                     ),
                   ],
                 ),
