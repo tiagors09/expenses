@@ -1,6 +1,6 @@
+import 'package:expenses/components/adaptative_date_picker.dart';
 import 'package:expenses/components/adaptative_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'adaptative_button.dart';
 
 class TransactionForm extends StatefulWidget {
@@ -28,19 +28,6 @@ class _TransactionForm extends State<TransactionForm> {
     widget.onSubmit(title, value, _selectedDate);
   }
 
-  _showDatePicker() {
-    showDatePicker(
-      context: context,
-      firstDate: DateTime(1999),
-      lastDate: DateTime.now(),
-      initialDate: DateTime.now(),
-    ).then((value) {
-      setState(() {
-        _selectedDate = value!;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -64,28 +51,11 @@ class _TransactionForm extends State<TransactionForm> {
                 controller: valueController,
                 label: 'Valor (R\$)',
               ),
-              SizedBox(
-                height: 70,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        _selectedDate == DateTime(0, 0, 0)
-                            ? 'Nenhuma data selecionada'
-                            : 'Data selecionada ${DateFormat('dd/MM/y').format(_selectedDate)}',
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: _showDatePicker,
-                      child: const Text(
-                        'Selecionar Data',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              AdaptativeDatePicker(
+                selectedDate: _selectedDate,
+                onDateChange: (newDate) => setState(() {
+                  _selectedDate = newDate;
+                }),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
