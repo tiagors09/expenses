@@ -7,6 +7,7 @@ import 'package:expenses/models/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:flutter/services.dart';
 
 main() => runApp(const ExpensesApp());
@@ -159,21 +160,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            if (_showChart || !isLandscape)
-              SizedBox(
+            Visibility(
+              visible: _showChart || !isLandscape,
+              child: SizedBox(
                 height: availableHeight * (isLandscape ? 0.70 : 0.30),
                 child: Chart(
                   recentTransaction: _recentTransactions,
                 ),
               ),
-            if (!_showChart || !isLandscape)
-              SizedBox(
+            ),
+            Visibility(
+              visible: !_showChart || !isLandscape,
+              child: SizedBox(
                 height: availableHeight * 0.70,
                 child: TransactionList(
                   transactions: _transactions,
                   onRemove: _deleteTransaction,
                 ),
               ),
+            ),
           ],
         ),
       ),
