@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AdaptativeButton extends StatelessWidget {
@@ -14,7 +15,7 @@ class AdaptativeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
+    return !kIsWeb && Platform.isIOS
         ? CupertinoButton(
             color: Theme.of(context).primaryColor,
             onPressed: onPressed,

@@ -5,6 +5,7 @@ import 'package:expenses/components/transaction_form.dart';
 import 'package:expenses/components/transaction_list.dart';
 import 'package:expenses/models/transaction.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
@@ -97,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
     required IconData icon,
     required void Function()? onPressed,
   }) {
-    return Platform.isIOS
+    return !kIsWeb && Platform.isIOS
         ? GestureDetector()
         : IconButton(
             onPressed: onPressed,
@@ -111,9 +112,10 @@ class _MyHomePageState extends State<MyHomePage> {
     var mediaQuery = MediaQuery.of(context);
     bool isLandscape = mediaQuery.orientation == Orientation.landscape;
 
-    final iconList = Platform.isIOS ? CupertinoIcons.news : Icons.list;
+    final iconList =
+        !kIsWeb && Platform.isIOS ? CupertinoIcons.news : Icons.list;
     final chartList =
-        Platform.isIOS ? CupertinoIcons.refresh : Icons.show_chart;
+        !kIsWeb && Platform.isIOS ? CupertinoIcons.refresh : Icons.show_chart;
 
     var actions = [
       _getIconButton(
@@ -129,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
     ];
 
-    final PreferredSizeWidget appBar = Platform.isIOS
+    final PreferredSizeWidget appBar = !kIsWeb && Platform.isIOS
         ? CupertinoNavigationBar(
             middle: const Text('Despesas Pessoais'),
             trailing: Row(
@@ -177,7 +179,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    return Platform.isIOS
+    return !kIsWeb && Platform.isIOS
         ? CupertinoPageScaffold(
             navigationBar: appBar as ObstructingPreferredSizeWidget,
             child: bodyPage,

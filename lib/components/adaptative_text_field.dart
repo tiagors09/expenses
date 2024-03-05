@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class AdaptativeTextField extends StatelessWidget {
@@ -19,7 +20,7 @@ class AdaptativeTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
+    return !kIsWeb && Platform.isIOS
         ? CupertinoTextField(
             controller: controller,
             keyboardType: keyboardType,
