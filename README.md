@@ -1,34 +1,34 @@
 # expenses
 
-App para controle de despesas.
+App for controlling expenses.
 
-## Instalação
+## Installation
 
-Certifique-se de ter o Flutter instalado em sua máquina. Se ainda não tiver, você pode [instalar o Flutter](https://flutter.dev/docs/get-started/install).
+Make sure you have Flutter installed on your machine. If you don't already have it, you can [install Flutter](https://flutter.dev/docs/get-started/install).
 
-Clone este repositório:
+Clone this repository:
 
 ```bash
 git clone https://github.com/seu-usuario/expenses.git
 ```
 
-Em seguida, entre no diretório do projeto:
+Then go to the project directory:
 
 ```bash
 cd expenses
 ```
 
-Instale as dependências:
+Install dependencies:
 
 ```bash
 flutter pub get
 ```
 
-## Executando o Aplicativo
+## Running the Application
 
-Certifique-se de que um dispositivo (emulador ou dispositivo físico) esteja conectado e pronto.
+Make sure a device (emulator or physical device) is connected and ready.
 
-Execute o aplicativo:
+Run the application:
 
 ```bash
 flutter run
