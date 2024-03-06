@@ -9,7 +9,7 @@ Make sure you have Flutter installed on your machine. If you don't already have 
 Clone this repository:
 
 ```bash
-git clone https://github.com/your-user/expenses.git
+git clone https://github.com/tiagors09/expenses.git
 ```
 
 Then go to the project directory:
