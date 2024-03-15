@@ -6,7 +6,12 @@ import 'adaptative_button.dart';
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
 
-  const TransactionForm({super.key, required this.onSubmit});
+  TransactionForm({
+    super.key,
+    required this.onSubmit,
+  }) {
+    print('calling TransactionForm constructor');
+  }
 
   @override
   State<TransactionForm> createState() => _TransactionForm();
@@ -29,7 +34,41 @@ class _TransactionForm extends State<TransactionForm> {
   }
 
   @override
+  void initState() {
+    print('calling initState TransactionForm');
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    print('calling didChangeDependencies TransactionForm');
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant TransactionForm oldWidget) {
+    print('calling didUpdateWidget TransactionForm');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  // chamado quando é removido da árvore de widgets
+  @override
+  void deactivate() {
+    print('calling deactivate TransactionForm');
+    super.deactivate();
+  }
+
+  // Chamado quando é removido permanentemente
+  // da árvore de widgets
+  @override
+  void dispose() {
+    print('calling dispose TransactionForm');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    print('calling build TransactionForm');
     return Card(
       elevation: 0,
       child: SingleChildScrollView(
