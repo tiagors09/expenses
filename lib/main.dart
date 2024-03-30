@@ -1,14 +1,12 @@
-import 'dart:async';
 import 'dart:math';
 import 'dart:io';
-import 'package:expenses/components/chart.dart';
-import 'package:expenses/components/transaction_form.dart';
-import 'package:expenses/components/transaction_list.dart';
-import 'package:expenses/models/transaction.dart';
+import 'components/chart.dart';
+import 'components/transaction_form.dart';
+import 'components/transaction_list.dart';
+import 'models/transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
 
 main() => runApp(const ExpensesApp());
 
@@ -17,14 +15,6 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*
-    SystemChrome.setPreferredOrientations(
-      [
-        DeviceOrientation.portraitUp,
-      ],
-    );
-    */
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
@@ -55,24 +45,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addObserver(this);
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    print(state);
-  }
-
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [];
   bool _showChart = false;
 
@@ -124,6 +97,11 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             color: Colors.white,
           );
   }
+
+  _createIcon(IconData icon, String label) => BottomNavigationBarItem(
+        icon: Icon(icon),
+        label: label,
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -208,15 +186,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
           )
         : Scaffold(
             bottomNavigationBar: BottomNavigationBar(
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Profile',
-                )
+              items: [
+                _createIcon(Icons.home, 'Home'),
+                _createIcon(Icons.person, 'Profile'),
               ],
             ),
             appBar: appBar,
