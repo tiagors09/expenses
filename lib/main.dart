@@ -207,6 +207,18 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
             child: bodyPage,
           )
         : Scaffold(
+            bottomNavigationBar: BottomNavigationBar(
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Profile',
+                )
+              ],
+            ),
             appBar: appBar,
             body: bodyPage,
             floatingActionButton: FloatingActionButton(
